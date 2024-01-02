@@ -45,6 +45,7 @@ class Perfil(models.Model):
             ('TO', 'Tocantins'),
             )
         )
+    cep = models.CharField(max_length =20, blank=True, null=True)
     def __str__(self) -> str:
         return f'{self.usuario.first_name}'
     
