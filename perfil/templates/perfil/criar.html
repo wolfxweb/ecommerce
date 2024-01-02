@@ -8,7 +8,7 @@
 <div class="row">
 
     {% if not request.user.is_authenticated %}
-    <div class="col-lg mt-3">
+    <div id='div-login' class="col-lg mt-3">
         <h4>Login</h4>
         <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
 
@@ -31,7 +31,7 @@
     </div>
     {% endif %}
 
-    <div class="col-lg mt-3">
+    <div id='div_cadastro' class="col-lg mt-3">
 
         {% block titulocadastro %}
         <h4>Cadastro</h4>
@@ -43,8 +43,8 @@
 
         <form method="POST" action="">
             {% csrf_token %}
-            {{ userform|crispy }}
-            {{ perfilform|crispy }}
+            {{ userform.as_p }}
+            {{ perfilform.as_p }}
 
             <div class="row">
                 <div class="col">

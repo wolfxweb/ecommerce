@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "produto",
     "pedido",
-    "perfil"
+    "perfil",
+    'crispy_forms',
+    'crispy_bootstrap4',
 
 ]
 
@@ -59,13 +61,17 @@ MIDDLEWARE = [
 
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
 ROOT_URLCONF = "loja.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-             BASE_DIR / "templates"
+              os.path.join(BASE_DIR, 'templates')
              ],
         "APP_DIRS": True,
         "OPTIONS": {

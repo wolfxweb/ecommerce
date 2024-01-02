@@ -7,9 +7,20 @@ class PerfilForm(forms.ModelForm):
     class Meta:
         model = models.Perfil
         fields = '__all__'
-        exclude = ('usuario',)
+        exclude = ('usuario','data_nacimento','cpf','idade')
 
-
+    endereco = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    numero = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    complemento = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False  
+    )
+    bairro = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    cidade = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    estado = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'id_estado'}),
+        label='Estado',
+    )
 class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=False,
@@ -32,7 +43,27 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'username', 'password',
                   'password2', 'email')
-
+    first_name = forms.CharField(
+        label = "Primeiro nome",
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(
+        label= "Sobrenome",
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(
+        label= 'Nome login',
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(
+        label= 'Senha',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(
+        label="Confirme sua senha",
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(
+        label='E-mail',
+        widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    cep = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'onblur': 'consultarCEP()'})
+    )
     def clean(self, *args, **kwargs):
         data = self.data
         cleaned = self.cleaned_data

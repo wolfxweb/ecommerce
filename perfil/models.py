@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 
 class Perfil(models.Model):
     usuario = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name='Usuário')
-    data_nacimento = models.DateField()
-    cpf = models.CharField(max_length =11)
+    data_nacimento = models.DateField( blank=True, null=True)
+    cpf = models.CharField(max_length =11, blank=True, null=True)
     endereco =  models.CharField(max_length =100)
     numero = models.CharField(max_length =10)
-    complemento  = models.CharField(max_length = 200)
+    complemento  = models.CharField(max_length = 200, blank=True, null=True)
     bairro = models.CharField(max_length = 100)
     cidade = models.CharField( max_length=100)
     estado = models.CharField(
