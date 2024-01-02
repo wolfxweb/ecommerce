@@ -5,7 +5,7 @@ from . import models
 
 
 class VariacaoInline(admin.TabularInline):
-    model = models.Varicao
+    model = models.Variacao
     extra = 1
     
 class ProdutoAdmin(admin.ModelAdmin):
@@ -18,5 +18,5 @@ class ProdutoAdmin(admin.ModelAdmin):
         VariacaoInline
     ]
 
-admin.site.register(models.Varicao)
+admin.site.register(models.Variacao)
 admin.site.register(models.Produto,ProdutoAdmin)

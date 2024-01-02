@@ -71,7 +71,7 @@ class Produto(models.Model):
     def __str__(self):
         return self.nome
 
-class Varicao(models.Model):
+class Variacao(models.Model):
     produto = models.ForeignKey(Produto, on_delete= models.CASCADE)
     nome = models.CharField(max_length=50)
     preco =models.FloatField()

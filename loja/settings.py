@@ -136,12 +136,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MESSAGE_TGAS = {
-    constants.DEBUG:'alert-info',
-    constants.ERROR:'alert-danger',
-    constants.INFO:'alert-info',
-    constants.SUCCESS:'alert-success',
-    constants.WARNING:'alert-warning',
+MESSAGE_TAGS = {
+    constants.DEBUG: 'alert-info',
+    constants.ERROR: 'alert-danger',
+    constants.INFO: 'alert-info',
+    constants.SUCCESS: 'alert-success',
+    constants.WARNING: 'alert-warning',
 }
 SESSION_COOKIE_AGE = 60*60*24*7
 
