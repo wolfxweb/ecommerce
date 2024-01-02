@@ -8,7 +8,9 @@ class PerfilForm(forms.ModelForm):
         model = models.Perfil
         fields = '__all__'
         exclude = ('usuario','data_nacimento','cpf','idade')
-
+    cep = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'onblur': 'consultarCEP()'})
+    )
     endereco = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     numero = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     complemento = forms.CharField(
@@ -61,9 +63,7 @@ class UserForm(forms.ModelForm):
     email = forms.CharField(
         label='E-mail',
         widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    cep = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'onblur': 'consultarCEP()'})
-    )
+
     def clean(self, *args, **kwargs):
         data = self.data
         cleaned = self.cleaned_data
