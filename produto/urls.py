@@ -8,5 +8,5 @@ urlpatterns = [
      path('adicionaraocarrinho/',views.AdiconarAoCarrinho.as_view(), name='adiciona_ao_carrinho' ),
      path('removercarrinho/',views.RemoverCarrinho.as_view(), name='remover_carrinho' ),
      path('carrinho/',views.CarrinhoProdutos.as_view(), name='carrinho' ),
-     path('finalizar/',views.FinalizarCarrinho.as_view(), name='finalizar' ),
+     path('resumocompra/',views.ResumoCompra.as_view(), name='resumocompra' ),
 ]
