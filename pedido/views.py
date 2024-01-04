@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, reverse
 from django.views.generic import ListView, DetailView
 from django.views import View
-# from django.http import HttpResponse
+from django.http import HttpResponse
 from django.contrib import messages
 
 from produto.models import Variacao
@@ -28,6 +28,11 @@ class Pagar(DispatchLoginRequiredMixin, DetailView):
     model = Pedido
     pk_url_kwarg = 'pk'
     context_object_name = 'pedido'
+    #para listar somente os pedidos do usuario logado
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        qs = qs.filter(usuario=self.request.user)
+        return qs
 
 
 class SalvarPedido(View):
@@ -140,7 +145,4 @@ class Lista(DispatchLoginRequiredMixin, ListView):
     ordering = ['-id']
 
 
-class Detalhe(View):
-    def get(self, *args, **kwargs):
-        return HttpResponse('detalhes')
 
